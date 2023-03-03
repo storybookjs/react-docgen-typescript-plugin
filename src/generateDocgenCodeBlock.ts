@@ -1,6 +1,6 @@
 import path from "path";
 import ts from "typescript";
-import { ComponentDoc, PropItem } from "react-docgen-typescript";
+import { ComponentDoc, PropItem } from "@storybook/react-docgen-typescript";
 
 export interface GeneratorOptions {
   filename: string;
