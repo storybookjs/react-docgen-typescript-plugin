@@ -28,6 +28,52 @@ try {
 catch (__react_docgen_typescript_loader_error) { }"
 `;
 
+exports[`component fixture DefaultExportComponent.tsx has code block generated 1`] = `
+"import * as React from \\"react\\";
+
+interface DefaultPropValueComponentProps {
+  /**
+   * Button color.
+   *
+   * @default blue
+   **/
+  color: \\"blue\\" | \\"green\\";
+
+  /**
+   * Button counter.
+   */
+  counter: number;
+
+  /**
+   * Button disabled.
+   */
+  disabled: boolean;
+}
+
+/**
+ * Component with a prop with a default value.
+ */
+export default function DefaultExportComponent(props: React.PropsWithChildren<DefaultPropValueComponentProps) {
+  return (<button disabled={props.disabled} style={{ backgroundColor: props.color }}>
+    {props.counter}
+    {props.children}
+  </button>);
+}
+
+DefaultExportComponent.defaultProps = {
+  counter: 123,
+  disabled: false,
+};
+
+try {
+    // @ts-ignore
+    DefaultExportComponent.displayName = \\"DefaultExportComponent\\";
+    // @ts-ignore
+    DefaultExportComponent.__docgenInfo = { \\"description\\": \\"Component with a prop with a default value.\\", \\"displayName\\": \\"DefaultExportComponent\\", \\"props\\": { \\"color\\": { \\"defaultValue\\": { value: \\"blue\\" }, \\"description\\": \\"Button color.\\", \\"name\\": \\"color\\", \\"required\\": true, \\"type\\": { \\"name\\": \\"\\\\\\"blue\\\\\\" | \\\\\\"green\\\\\\"\\" } }, \\"counter\\": { \\"defaultValue\\": { value: 123 }, \\"description\\": \\"Button counter.\\", \\"name\\": \\"counter\\", \\"required\\": false, \\"type\\": { \\"name\\": \\"number\\" } }, \\"disabled\\": { \\"defaultValue\\": { value: false }, \\"description\\": \\"Button disabled.\\", \\"name\\": \\"disabled\\", \\"required\\": false, \\"type\\": { \\"name\\": \\"boolean\\" } } } };
+}
+catch (__react_docgen_typescript_loader_error) { }"
+`;
+
 exports[`component fixture DefaultPropValue.tsx has code block generated 1`] = `
 "import * as React from \\"react\\";
 
@@ -91,7 +137,7 @@ Button.displayName = \\"MyButtonDisplayName\\";
 
 try {
     // @ts-ignore
-    MyButtonDisplayName.displayName = \\"MyButtonDisplayName\\";
+    Button.displayName = \\"MyButtonDisplayName\\";
     // @ts-ignore
     Button.__docgenInfo = { \\"description\\": \\"\\", \\"displayName\\": \\"MyButtonDisplayName\\", \\"props\\": { \\"text\\": { \\"defaultValue\\": null, \\"description\\": \\"\\", \\"name\\": \\"text\\", \\"required\\": true, \\"type\\": { \\"name\\": \\"string\\" } } } };
 }

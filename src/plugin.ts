@@ -1,7 +1,7 @@
 import path from "path";
 import createDebug from "debug";
 import ts from "typescript";
-import * as docGen from "@storybook/react-docgen-typescript";
+import * as docGen from "react-docgen-typescript";
 import { matcher } from "micromatch";
 import * as webpack from "webpack";
 import findCacheDir from "find-cache-dir";

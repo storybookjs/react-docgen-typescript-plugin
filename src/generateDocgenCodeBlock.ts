@@ -1,6 +1,7 @@
 import path from "path";
 import ts from "typescript";
-import { ComponentDoc, PropItem } from "@storybook/react-docgen-typescript";
+import { ComponentDoc, PropItem } from "react-docgen-typescript";
+import { getIdentifier } from "./getIdentifier";
 
 export interface GeneratorOptions {
   filename: string;
@@ -47,7 +48,7 @@ function setDisplayName(d: ComponentDoc): ts.Statement {
     ts.factory.createExpressionStatement(
       ts.factory.createBinaryExpression(
         ts.factory.createPropertyAccessExpression(
-          ts.factory.createIdentifier(d.displayName),
+          ts.factory.createIdentifier(getIdentifier(d)),
           ts.factory.createIdentifier("displayName")
         ),
         ts.SyntaxKind.EqualsToken,
@@ -305,7 +306,7 @@ function setComponentDocGen(
       ts.factory.createBinaryExpression(
         // SimpleComponent.__docgenInfo
         ts.factory.createPropertyAccessExpression(
-          ts.factory.createIdentifier(d.expression?.getName() || d.displayName),
+          ts.factory.createIdentifier(getIdentifier(d)),
           ts.factory.createIdentifier("__docgenInfo")
         ),
         ts.SyntaxKind.EqualsToken,
