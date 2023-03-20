@@ -172,6 +172,29 @@ try {
 catch (__react_docgen_typescript_loader_error) { }"
 `;
 
+exports[`component fixture MarketBad.tsx has code block generated 1`] = `
+"import React from 'react';
+
+type Props = {
+  title: string;
+  market: string;
+  isFutures?: boolean;
+};
+
+const MarketBad = (props: Props) => {
+  return null;
+};
+
+export { MarketBad };
+try {
+    // @ts-ignore
+    MarketBad.displayName = \\"MarketBad\\";
+    // @ts-ignore
+    MarketBad.__docgenInfo = { \\"description\\": \\"\\", \\"displayName\\": \\"MarketBad\\", \\"props\\": { \\"title\\": { \\"defaultValue\\": null, \\"description\\": \\"\\", \\"name\\": \\"title\\", \\"required\\": true, \\"type\\": { \\"name\\": \\"string\\" } }, \\"market\\": { \\"defaultValue\\": null, \\"description\\": \\"\\", \\"name\\": \\"market\\", \\"required\\": true, \\"type\\": { \\"name\\": \\"string\\" } }, \\"isFutures\\": { \\"defaultValue\\": null, \\"description\\": \\"\\", \\"name\\": \\"isFutures\\", \\"required\\": false, \\"type\\": { \\"name\\": \\"boolean\\" } } } };
+}
+catch (__react_docgen_typescript_loader_error) { }"
+`;
+
 exports[`component fixture MultiProps.tsx has code block generated 1`] = `
 "import * as React from \\"react\\";
 
