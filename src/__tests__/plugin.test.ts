@@ -43,15 +43,17 @@ function compile(config: Configuration): Promise<string> {
         return reject(stats.toString("errors-only"));
       }
 
-      memfs.readFile(
-        "./dist/main.js",
-        {
-          encoding: "utf-8",
-        },
-        // eslint-disable-next-line
-        // @ts-ignore: Type mismatch again
-        (err, data) => (err ? reject(err) : resolve(data))
-      );
+      if (memfs) {
+        memfs.readFile(
+          "./dist/main.js",
+          {
+            encoding: "utf-8",
+          },
+          // eslint-disable-next-line
+          // @ts-ignore: Type mismatch again
+          (err, data) => (err ? reject(err) : resolve(data))
+        );
+      }
 
       return undefined;
     });
