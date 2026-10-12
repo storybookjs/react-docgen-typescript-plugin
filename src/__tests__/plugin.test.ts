@@ -1,6 +1,6 @@
 import webpack, { Configuration } from "webpack";
 import { createFsFromVolume, IFs, Volume } from "memfs";
-import ReactDocgenTypeScriptPlugin from "..";
+import ReactDocgenTypeScriptPlugin, { PluginOptions } from "..";
 import { LoaderOptions } from "../types";
 
 // eslint-disable-next-line
@@ -79,11 +79,39 @@ const getConfig = (
   ...config,
 });
 
-// TODO: What else to test and how?
 test("default options", async () => {
   const result = await compile(getConfig({}));
 
   expect(result).toContain("STORYBOOK_REACT_CLASSES");
+});
+
+describe("include and exclude globs", () => {
+  const cases: Array<[string, PluginOptions, boolean]> = [
+    ["empty include", { include: [] }, false],
+    ["nonmatching include", { include: ["**/Other.tsx"] }, false],
+    [
+      "multiple include patterns",
+      { include: ["**/Other.tsx", "**/Simple.tsx"] },
+      true,
+    ],
+    ["brace alternatives", { include: ["**/*.{ts,tsx}"] }, true],
+    ["extglob alternatives", { include: ["**/+(Simple|Other).tsx"] }, true],
+    ["character classes", { include: ["**/[SO]*.tsx"] }, true],
+    ["negated pattern", { include: ["!**/Other.tsx"] }, true],
+    ["nonmatching exclude", { exclude: ["**/Other.tsx"] }, true],
+    ["matching exclude", { exclude: ["**/Simple.tsx"] }, false],
+    [
+      "exclude takes precedence",
+      { include: ["**/*.tsx"], exclude: ["**/Simple.tsx"] },
+      false,
+    ],
+  ];
+
+  test.each(cases)("%s", async (_name, options, expected) => {
+    const result = await compile(getConfig(options));
+
+    expect(result.includes("STORYBOOK_REACT_CLASSES")).toBe(expected);
+  });
 });
 
 describe("custom options", () => {

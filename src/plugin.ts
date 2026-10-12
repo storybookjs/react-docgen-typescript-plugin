@@ -2,7 +2,7 @@ import path from "path";
 import createDebug from "debug";
 import ts from "typescript";
 import * as docGen from "react-docgen-typescript";
-import { matcher } from "micromatch";
+import picomatch from "picomatch";
 import * as webpack from "webpack";
 import findCacheDir from "find-cache-dir";
 import flatCache from "flat-cache";
@@ -56,7 +56,7 @@ function getTSConfigFile(tsconfigPath: string): ts.ParsedCommandLine {
 
 /** Create a glob matching function. */
 const matchGlob = (globs?: string[]) => {
-  const matchers = (globs || []).map((g) => matcher(g, { dot: true }));
+  const matchers = (globs || []).map((g) => picomatch(g, { dot: true }));
 
   return (filename: string) =>
     Boolean(filename && matchers.find((match) => match(filename)));
